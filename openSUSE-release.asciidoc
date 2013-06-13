@@ -69,17 +69,24 @@ digraph factory {
 Feature freeze
 --------------
 
-Why?
-~~~~
-
 * stop breaking everything everyday
 * concentration on testing and fixing
-* no new features allowed^*^
 
 Toolchain Freeze
 ~~~~~~~~~~~~~~~~
 
 * freeze core components, leaf packages can be updated
+
+Stabilization Freeze
+~~~~~~~~~~~~~~~~~~~~
+
+* no new features*, concentrate on fixes
+* nothing that breaks something else can't get in
+
+Pre-release Freeze
+~~~~~~~~~~~~~~~~~~
+
+* only really important fixes can get in
 
 Feature Highlights
 ------------------
@@ -146,3 +153,5 @@ Wiki
 
 http://software.opensuse.org
 
+Track the impact
+----------------
