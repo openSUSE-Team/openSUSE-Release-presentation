@@ -5,7 +5,7 @@
 :title: The amazing story of openSUSE release
 :description: Story about how openSUSE Release is made
 :deckjs_theme: my-neon
-:deckjs_transition: horizontal-slide
+:deckjs_transition: fade
 
 
 New openSUSE is out!
