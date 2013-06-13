@@ -39,8 +39,7 @@ Factory development
 Factory development
 -------------------
 
-image:factory.png
-[comment,"graphviz", "factory.png"]
+["graphviz", "factory.png"]
 ---------------------------------------------------------------------
 digraph factory {
   rankdir=LR;
