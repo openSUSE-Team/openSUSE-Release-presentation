@@ -1,0 +1,149 @@
++++<small>+++#_The amazing story of_#+++</small><br/>+++ *openSUSE release*
+===========================================================================
+:author: openSUSE Team @ SUSE
+:backend: deckjs
+:title: The amazing story of openSUSE release
+:description: Story about how openSUSE Release is made
+:deckjs_theme: my-neon
+:deckjs_transition: horizontal-slide
+
+
+New openSUSE is out!
+--------------------
+
+What next?
+~~~~~~~~~~
+
+* unfreeze Factory
+* set the roadmap
+* start developing 
+* freeze it again
+* test it
+* fix it
+* branch it
+* fix it some more
+* release it
+
+Factory development
+-------------------
+
+* never ending inflow of package updates
+** staging projects for difficult ones (gcc, automake, ...)
+* changing all the time
+* breaking all the time
+
++++<br/>+++
+
+=> it's a lot of work to keep it going
+
+Factory development
+-------------------
+
+image:factory.png
+[comment,"graphviz", "factory.png"]
+---------------------------------------------------------------------
+digraph factory {
+  rankdir=LR;
+  ranksep=0.5;
+  nodesep=1;
+
+  graph [truecolor bgcolor="#ffffff00" fontcolor=white sep="+20"]
+  node [ color="white" fontcolor=white]
+  edge [ color="white" fontcolor=white]
+  A [ label="home project\npackage 'foo'" ]
+  Ad [ label="'foo's devel project" ]
+  F [ label="openSUSE Factory" ]
+  B [ label="branched 'bar' package" ]
+  Bd [ label="'bar's devel project" ]
+
+  B -> Bd [ label = "maintainer reviews fix", color=green ];
+  Bd -> F [ label = "automatic checks\nreview team", color=green ];
+  F -> B [ label = "new 'foo' broke 'bar'", color=red ];
+  A -> Ad [ label = "maintainer review" ];
+  Ad -> F [ label = "automatic checks\nreview team" ];
+
+  {rank=same; Ad Bd }
+  {rank=same; A B }
+}
+---------------------------------------------------------------------
+
+Feature freeze
+--------------
+
+Why?
+~~~~
+
+* stop breaking everything everyday
+* concentration on testing and fixing
+* no new features allowed^*^
+
+Toolchain Freeze
+~~~~~~~~~~~~~~~~
+
+* freeze core components, leaf packages can be updated
+
+Feature Highlights
+------------------
+
+* list of important new features
+** no new features after feature freeze ;-)
+* choose important applications
+* go through package changelogs
+* pickup the most important stuff
+* split features into categories
+* rewrite it as a text
+
++++<br/>+++
+
+* lot of work +
+=> maintainers help welcome!
+
+Factory testing
+---------------
+
+openQA
+~~~~~~
+
+* automatic testing
+* needs to be verified, reproduced and reported
+
+Manual testing
+~~~~~~~~~~~~~~
+
+* hardware dependent features like UEFI/SecureBoot
+* installation works from DVD/USB
+
+Branch new openSUSE
+-------------------
+
+* _openSUSE:Factory_ gets copied to _openSUSE:12.3_
+* Factory and new openSUSE start to diverge
+
+Select a Gold Master
+--------------------
+
+Set of future release images
+
+* chosen from automatic builds
+* no critical ship stopper bugs
+* it is installable
+* still has even known bugs
+** fixed later via updates
+
+Preparing mirrors
+-----------------
+
+Update web pages
+----------------
+
+Wiki
+
+* Welcome page
+* new portal page
+* replace old with new
+** release notes
+** feature highlights
+** ...
+
+http://software.opensuse.org
+

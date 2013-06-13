@@ -1,0 +1,6 @@
+Slides are written using asciidoc and deck.js
+
+To get them to compile, you need asciidoc installed and deck.js, ideally with
+few extra modifications. Install asciidoc and follow this:
+
+https://github.com/miska/my-deckjs-for-asciidoc#installation
