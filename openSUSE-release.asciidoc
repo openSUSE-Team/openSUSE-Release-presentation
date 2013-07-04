@@ -24,7 +24,7 @@ What next?
 * fix it some more
 * release it
 
-Factory development
+Factory Development
 -------------------
 
 * never ending inflow of package updates
@@ -32,12 +32,11 @@ Factory development
 * changing all the time
 * breaking all the time
 
-+++<br/>+++
+ifdef::backend-deckjs[+++<br/>+++]
 
 => it's a lot of work to keep it going
 
-Factory development
--------------------
+ifdef::backend-deckjs[<<<]
 
 ["graphviz", "factory.png"]
 ---------------------------------------------------------------------
@@ -57,7 +56,7 @@ digraph factory {
 
   B -> Bd [ label = "maintainer reviews fix", color=green ];
   Bd -> F [ label = "automatic checks\nreview team", color=green ];
-  F -> B [ label = "new 'foo' broke 'bar'", color=red ];
+  F -> B [ label = "new 'foo' broke 'bar'", color=firebrick1 ];
   A -> Ad [ label = "maintainer review" ];
   Ad -> F [ label = "automatic checks\nreview team" ];
 
@@ -66,46 +65,103 @@ digraph factory {
 }
 ---------------------------------------------------------------------
 
-Feature freeze
+Reviews
+-------
+
+factory-auto
+~~~~~~~~~~~~
+
+* automatic check
+* source validation, download links, rpmlintrc
+
+legal-auto
+~~~~~~~~~~
+
+* automatic check, searches for new package/big changes
+* triggers legal review when needed
+
+opensuse-review-team
+~~~~~~~~~~~~~~~~~~~~
+
+* human team reviewing manually
+
+ifdef::backend-deckjs[<<<]
+
+factory-repo-checker
+~~~~~~~~~~~~~~~~~~~~
+
+* automatic check
+* it builds
+* it's buildable in Factory
+* it's installable in Factory
+* no file conflicts
+* rpmlint
+* triggered factory-auto, before review team
+
+Feature Freeze
 --------------
+
+Goals
+~~~~~
 
 * stop breaking everything everyday
 * concentration on testing and fixing
+* force developers to release
+
+image:factory.png[Factory Development" style="height: 200px; margin-top: 40px;]
+
+ifdef::backend-deckjs[<<<]
 
 Toolchain Freeze
 ~~~~~~~~~~~~~~~~
 
-* freeze core components, leaf packages can be updated
+* 2013-07-19
+* freeze core components
+** autoconf, automake, gcc, binutils, ...
+* other packages still can be updated
 
-Stabilization Freeze
-~~~~~~~~~~~~~~~~~~~~
-
-* no new features*, concentrate on fixes
-* nothing that breaks something else can't get in
-
-Pre-release Freeze
+Base System Freeze
 ~~~~~~~~~~~~~~~~~~
 
-* only really important fixes can get in
+* Milestone 4, 2013-08-08
+* all features ready
+* kernel, KDE, Gnome only patch level updates
+* X11 and below frozen
 
-Feature Highlights
-------------------
+ifdef::backend-deckjs[<<<]
 
-* list of important new features
-** no new features after feature freeze ;-)
-* choose important applications
-* go through package changelogs
-* pickup the most important stuff
-* split features into categories
-* rewrite it as a text
+Full Feature Freeze
+~~~~~~~~~~~~~~~~~~~
 
-+++<br/>+++
+* Beta 1, 2013-09-19
+* no new features*, concentrate on fixes
+* text freeze for translation
+* feature and version freeze for DVD
 
-* lot of work +
-=> maintainers help welcome!
+ifdef::backend-deckjs[<<<]
+
+Start of Maintenance
+~~~~~~~~~~~~~~~~~~~~
+
+* release branched in OBS
+** cp _openSUSE:Factory_ _openSUSE:13.1_
+* updates goes to update repos
+* _Factory_ unfrozen
+* updates in _Factory_ doesn't affect 13.1
+* _Factory_ and _13.1_ starts to diverge
 
 Factory testing
 ---------------
+
+* various HW combinations
+** i586/x86_64, UEFI, Secure Boot
+* various installation media
+** DVD, Live KDE, Live Gnome, NET install
+* various installation options
+** LVM? Encrypted root? BTRFS?
+* every milestone/Beta/RC gets tested
+
+ifdef::backend-deckjs[<<<]
 
 openQA
 ~~~~~~
@@ -119,39 +175,78 @@ Manual testing
 * hardware dependent features like UEFI/SecureBoot
 * installation works from DVD/USB
 
-Branch new openSUSE
--------------------
+ifdef::backend-deckjs[<<<]
 
-* _openSUSE:Factory_ gets copied to _openSUSE:12.3_
-* Factory and new openSUSE start to diverge
+["graphviz", "testing.png"]
+---------------------------------------------------------------------
+digraph factory {
+  rankdir=LR;
+  ranksep=0.5;
+  nodesep=1;
+
+  graph [truecolor bgcolor="#ffffff00" fontcolor=white sep="+20"]
+  node [ color="white" fontcolor=white]
+
+  edge [ color="white" fontcolor=white]
+  obs [ label="obs" ]
+  bnc [ label="Bugzilla" ]
+  openqa [ label="openQA" ]
+  hm [ label="Human tester" ]
+  dev [ label="Developer" ]
+
+  obs -> openqa [ label = "automatic testing" ];
+  openqa -> hm [ label = "verifying failures", color=gold ];
+  obs -> hm [ label = "manual/HW testing" ];
+  hm -> bnc [ color=firebrick1 ];
+  bnc -> dev [ color=gold ];
+  dev -> obs [ label = "fix sent back", color=green ];
+
+  {rank=same; hm bnc }
+  {rank=same; openqa dev }
+
+}
+---------------------------------------------------------------------
 
 Select a Gold Master
 --------------------
 
-Set of future release images
+Selected release images
 
 * chosen from automatic builds
 * no critical ship stopper bugs
 * it is installable
 * still has even known bugs
-** fixed later via updates
-
-Preparing mirrors
------------------
+** fixed via updates
+** fixes might be ready on release date
 
 Update web pages
 ----------------
 
 Wiki
 
-* Welcome page
 * new portal page
-* replace old with new
-** release notes
-** feature highlights
-** ...
+* replace old documentation with new
 
-http://software.opensuse.org
+ifdef::backend-deckjs[+++<br/>+++]
+
+software.opensuse.org
+
+* switch the stable release
+
+ifdef::backend-deckjs[+++<br/>+++]
+
+www.opensuse.org
+
+...
 
 Track the impact
 ----------------
+
+* download stats
+* articles about new release
+* social networks
+* ...
+
+ifdef::backend-deckjs[+++<br/>+++]
+
+Alberto knows more ;-)
