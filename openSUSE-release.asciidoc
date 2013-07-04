@@ -42,12 +42,13 @@ ifdef::backend-deckjs[<<<]
 ---------------------------------------------------------------------
 digraph factory {
   rankdir=LR;
-  ranksep=0.5;
-  nodesep=1;
+  nodesep=1.5;
 
-  graph [truecolor bgcolor="#ffffff00" fontcolor=white sep="+20"]
-  node [ color="white" fontcolor=white]
-  edge [ color="white" fontcolor=white]
+  graph [truecolor, bgcolor="#ffffff00", fontcolor=white, sep="+2"]
+
+  node [ color="white" fontcolor=white, penwidth=2]
+  edge [ color="white" fontcolor=white, penwidth=4, arrowsize=2]
+
   A [ label="home project\npackage 'foo'" ]
   Ad [ label="'foo's devel project" ]
   F [ label="openSUSE Factory" ]
@@ -185,9 +186,9 @@ digraph factory {
   nodesep=1;
 
   graph [truecolor bgcolor="#ffffff00" fontcolor=white sep="+20"]
-  node [ color="white" fontcolor=white]
+  node [ color="white" fontcolor=white, penwidth=2]
+  edge [ color="white" fontcolor=white, penwidth=4, arrowsize=2]
 
-  edge [ color="white" fontcolor=white]
   obs [ label="obs" ]
   bnc [ label="Bugzilla" ]
   openqa [ label="openQA" ]
